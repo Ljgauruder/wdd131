@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content • Light/Dark Mode</title>
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --text: #212529;
+            --card: #ffffff;
+            --accent: #0d6efd;
+        }
+        
+        .dark {
+            --bg: #212529;
+            --text: #f8f9fa;
+            --card: #343a40;
+            --accent: #0d6efd;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--card);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background: var(--accent);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .status {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dynamic Paragraphs</h1>
+        <div class="toggle-container">
+            <span>Light</span>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+            <span>Dark</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Loaded Content</h2>
+            <div id="content"></div>
+            <button id="load-btn">Load / Refresh Content</button>
+            <div id="status" class="status"></div>
+        </div>
+    </main>
+
+    <script>
+        // Theme handling
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        function setTheme(isDark) {
+            if (isDark) {
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            toggle.checked = true;
+            body.classList.add('dark');
+        }
+
+        toggle.addEventListener('change', () => {
+            setTheme(toggle.checked);
+        });
+
+        // Content loading
+        const contentDiv = document.getElementById('content');
+        const statusDiv = document.getElementById('status');
+        const loadBtn = document.getElementById('load-btn');
+
+        async function loadContent() {
+            try {
+                statusDiv.textContent = 'Loading content.txt...';
+                contentDiv.innerHTML = '';
+                
+                const response = await fetch('content.txt');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                
+                if (!text.trim()) {
+                    statusDiv.textContent = 'Content file is empty.';
+                    return;
+                }
+
+                // Split into paragraphs (double newlines or single lines)
+                const paragraphs = text.split(/\n\s*\n|\r\n\s*\r\n/).filter(p => p.trim());
+                
+                paragraphs.forEach((para, index) => {
+                    const p = document.createElement('p');
+                    p.textContent = para.trim();
+                    contentDiv.appendChild(p);
+                });
+                
+                statusDiv.textContent = `Loaded ${paragraphs.length} paragraph(s) successfully!`;
+                
+            } catch (error) {
+                console.error(error);
+                statusDiv.textContent = `Error loading content.txt: ${error.message}`;
+                statusDiv.style.color = '#dc3545';
+            }
+        }
+
+        // Load content on page load
+        window.addEventListener('load', () => {
+            loadContent();
+        });
+
+        // Manual refresh button
+        loadBtn.addEventListener('click', loadContent);
+    </script>
+</body>
+</html>
