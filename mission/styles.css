@@ -12,10 +12,24 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    transition: background-color 0.15s;
 }
 
 header {
     margin-bottom: -40px;
+    position: relative;
+}
+
+#theme-select {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
 }
 
 .mission-container {
@@ -25,6 +39,7 @@ header {
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
     border: 1px solid #ddd;
     line-height: 1.6;
+    transition: all 0.3s;
 }
 
 .title {
