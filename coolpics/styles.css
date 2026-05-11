@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f1f5f9;
+}
+
+.header-top {
+    background-color: #2563eb;
+    color: white;
+    padding: 1.2rem 5%;
+    text-align: center;
+}
+
+.logo {
+    font-size: 2.1rem;
+    font-weight: 700;
+}
+
+.navbar {
+    background-color: #2563eb;
+    padding: 1rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.menu-button {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    font-family: inherit;
+}
+
+@media (max-width: 1000px) {
+    .nav-links { 
+        display: none; 
+    }
+}
+
+@media (min-width: 1000px) {
+    .nav-links { 
+        display: flex; 
+    }
+    .menu-button { 
+        display: none; 
+    }
+}
+
+.current-work {
+    padding: 2.5rem 5% 4rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.current-work h2 {
+    text-align: center;
+    font-size: 2.1rem;
+    margin-bottom: 2.5rem;
+    color: #000000;
+    font-weight: 700;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.gallery-item {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 1px;
+    border: 8px solid white;
+    box-shadow: 0 12px 12px rgba(0,0,0,.5);
+    margin: 0 auto;
+}
+
+.gallery-item img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .current-work {
+        padding: 3.5rem 5% 5rem;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #1e2937;
+    color: #e2e8f0;
+    text-align: center;
+    padding: 1.8rem 5%;
+    font-size: 0.95rem;
+}
