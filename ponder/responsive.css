@@ -14,6 +14,10 @@ footer {
   padding: 1rem;
   background-color: lightblue;
 }
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+}
 h1 {
     text-align: center;
 }
@@ -26,8 +30,15 @@ section {
 nav a {
     padding: 20px;
     color: black;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    border-top: 1px solid gray;
+}
+.hide {
     display: none;
 }
+
 nav a:hover {
     text-decoration: none;
     color: #616061;
@@ -42,7 +53,18 @@ nav a:hover {
     height: 4px;
     background-color: black;
     margin: 5px 0;
+    transition: 0.4s;
 }
+
+.change .bar1 {
+  transform: translate(0, 8.5px) rotate(-45deg);
+}
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -8.5px) rotate(45deg);
+}
+          
 footer {
     text-align: center;
 }
