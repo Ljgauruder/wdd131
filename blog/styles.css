@@ -1,11 +1,5 @@
-/* 
-  Kids Read For Fun - Blog
-  Extremely simple layout matching the mockup.
-  Uses CSS Grid for the main review area.
-*/
-
 :root {
-    --line-color: #deb887;     /* Same color for horizontal and vertical lines */
+    --line-color: #deb887;
     --accent-color: #c0392b;
     --primary-color: #2c3e50;
 }
@@ -17,39 +11,39 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: white;   /* Entire page background is white */
-    padding: 20px 10px;
+    color: #000000;
+    background-color: white;
+    padding: 10px 10px;
 }
 
-/* Simple centered wrapper - minimal styling, no heavy separation */
 .container {
-    max-width: 1000px;
     margin: 0 auto;
     background-color: white;
 }
 
 /* Header */
 header {
-    padding: 1rem 1.5rem 0.75rem;
+    margin: 0 auto 10px;
 }
 
 header h1 {
-    font-size: 1.85rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 0.5rem;
 }
 
-/* Right-aligned nav */
+/* nav */
 nav ul {
     display: flex;
     justify-content: flex-end;
-    gap: 1.5rem;
+    gap: 5rem;
+    margin: 0.5rem 5rem 0.5rem;
     list-style: none;
+    font-size: 1.2rem;
 }
 
 nav a {
@@ -62,107 +56,101 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Horizontal lines - thin and consistent */
+/* Horizontal lines */
 hr {
     border: none;
-    border-top: 1px solid var(--line-color);
+    border-top: 2px solid var(--line-color);
     margin: 0;
 }
 
 /* Main content */
 main {
-    padding: 1.5rem 1.5rem 2rem;
+    padding: 50px 10px 10px;
 }
 
-/* Article - minimal */
 .book-review {
     padding-bottom: 1rem;
 }
 
-/* Grid layout for desktop */
+/* Grid layout default/desktop */
 .review-grid {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 1.75rem;
-    align-items: start;
 }
 
-/* Left meta column with vertical line */
+/* Left column with a vertical line */
 .review-details {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 1.2rem;
+    text-align: right;
+    color: #000000;
     padding-right: 1.4rem;
-    border-right: 1px solid var(--line-color);  /* Same color as horizontal lines */
-    min-height: 180px;   /* Helps the vertical line extend further down */
+    border-right: 2px solid var(--line-color);
+    min-height: 100%;
 }
 
 .review-details p {
     margin-bottom: 0.15rem;
+    text-align: right;
 }
 
 .review-details .date {
-    font-weight: 600;
     color: var(--primary-color);
 }
 
 .review-details .rating {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #f1c40f;
     margin-top: 0.3rem;
-    letter-spacing: 2px;
+    text-align: right;
+    letter-spacing: -4px;
 }
 
-/* Right content area */
 .review-content {
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
 }
 
-/* Book title - centered, aligned with main title */
+/* Book title */
 .book-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--accent-color);
     font-weight: 700;
-    text-align: center;
-    display: absolute;
+    text-align: left;
+
 }
 
-/* Book cover centered */
+/* Book cover */
 .book-cover {
-    max-width: 200px;
-    width: 100%;
+    width: 300px;
     height: auto;
     border: 1px solid #ccc;
-    margin: 0 auto;
-    display: block;
+    margin: 0.5rem 100px 1rem 20%;
 }
 
-/* Description left aligned */
+/* Description */
 .description {
-    font-size: 1rem;
-    color: #444;
+    font-size: 1.2rem;
+    color: #000000;
     text-align: left;
-    max-width: 60ch;
+    max-width: 70ch;
 }
 
-/* Footer with centered author */
+/* Footer with author */
 .review-footer {
-    margin-top: 1.25rem;
-}
-
-.review-divider {
-    border-top: 1px solid var(--line-color);
-    margin: 1rem 0 0.5rem;
+    margin: 40px 0 0;
 }
 
 .reviewer {
+    margin-top: 20px;
     text-align: center;
     font-style: italic;
-    color: #666;
+    font-size: 1.2rem;
+    color: #000000;
 }
 
-/* ==================== MOBILE ==================== */
+/* Small Screens (Mobile devices) */
 @media (max-width: 640px) {
     main {
         padding: 1rem 1rem 1.5rem;
@@ -170,6 +158,13 @@ main {
 
     .review-grid {
         display: block;
+    }
+    
+    nav ul {
+        margin: 10px 20px;
+        justify-content: right;
+        gap: 2rem;
+        font-size: 1rem;
     }
 
     .review-details {
@@ -181,19 +176,26 @@ main {
         padding-right: 0;
         margin-bottom: 1rem;
         min-height: auto;
+        font-size: 1rem;
     }
 
     .book-title {
         text-align: left;
-        font-size: 1.35rem;
+        font-size: 1.5rem;
     }
 
     .book-cover {
-        max-width: 160px;
-        margin: 0.75rem auto 1rem;
+        width: 180px;
+        margin: 1rem 1rem 1rem 5rem;
     }
 
     .description {
         text-align: left;
+        font-size: 1rem;
+        max-width: 45ch;
+    }
+
+    .reviewer {
+        font-size: 1rem;
     }
 }
