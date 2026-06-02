@@ -1,0 +1,118 @@
+:root {
+    --border: #777777;
+    --text: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background-color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 30px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    color: var(--text);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    font-size: 1rem;
+}
+
+.form-row.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #e2e8f0;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #d2d8e1;
+}
+
+/* Errors */
+.error-container {
+    margin-top: 20px;
+}
+
+.error-container ul {
+    list-style: none;
+    padding-left: 4px;
+}
+
+.error-container li {
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+/* Success */
+.success-container {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.success-container h2 {
+    color: var(--text);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.ticket-info p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--text);
+}
