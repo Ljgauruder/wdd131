@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snortleblat - Character Card</title>
+
+    <!-- Social Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Snortleblat - Swamp Beast Diplomat">
+    <meta property="og:description" content="A powerful reptilian warrior from the swamps. Level up or test his strength!">
+    <meta property="og:url" content="https://ljgauruder.github.io/wdd131/charactercard">
+    <meta property="og:image" content="https://ljgauruder.github.io/wdd131/charactercard/character.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Snortleblat - Swamp Beast Diplomat">
+    <meta name="twitter:description" content="A powerful reptilian warrior from the swamps.">
+    <meta name="twitter:image" content="https://ljgauruder.github.io/wdd131/charactercard/character.png">
+
+    <link rel="icon" href="favicon.ico">
+    
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3069/3069183.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    
+</head>
+<body>
+    <div class="card">
+        <img id="characterImage" src="character.png" alt="Snortleblat - Swamp Beast Diplomat" class="image">
+        
+        <div class="name" id="name">Snortleblat</div>
+        
+        <div class="stats">
+            <p><strong>Class:</strong> <span id="class">Swamp Beast Diplomat</span></p>
+            <p><strong>Level:</strong> <span id="level">8</span></p>
+            <p><strong>Health:</strong> <span id="health">100</p>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="attacked()">Attacked</button>
+            <button onclick="levelUp()">Level Up</button>
+        </div>
+    </div>
+</body>
+</html>
