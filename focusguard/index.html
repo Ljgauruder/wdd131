@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusGuard Study Timer</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script src="scripts/script.js" defer></script>
+</head>
+<body data-theme="light">
+    <header>
+        <div class="logo">FocusGuard</div>
+        <nav class="theme-controls">
+            <button id="theme-light" class="theme-btn active">Light</button>
+            <button id="theme-dark" class="theme-btn">Dark</button>
+        </nav>
+    </header>
+
+    <main>
+        <!--timer-->
+        <section class="timer-section">
+            <div id="timer-display" class="timer-display">25:00</div>
+            
+            <div class="timer-modes">
+                <button class="mode-btn active" data-time="25" data-mode="study">Study 25m</button>
+                <button class="mode-btn" data-time="5" data-mode="short">Short Break 5m</button>
+                <button class="mode-btn" data-time="15" data-mode="long">Long Break 15m</button>
+            </div>
+
+            <div class="timer-controls">
+                <button id="start-btn">Start</button>
+                <button id="pause-btn">Pause</button>
+                <button id="reset-btn">Reset</button>
+            </div>
+        </section>
+
+        <!--side info: streak counter and study tips-->
+        <div class="side-info">
+            <div class="streak-card">
+                <h3>Current Streak</h3>
+                <div id="streak-count" class="streak">0 🔥</div>
+                <p>days in a row</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>Today's Study Tip</h3>
+                <p id="daily-tip">Loading tip...</p>
+            </div>
+        </div>
+
+        <!--tasks-->
+        <section class="tasks-section">
+            <h2>My Tasks</h2>
+            <div class="add-task">
+                <input type="text" id="task-input" placeholder="Add new task...">
+                <button id="add-task-btn">Add Task</button>
+            </div>
+            <ul id="task-list"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy 2026 Logan Gauruder FocusGuard</p>
+    </footer>
+</body>
+</html>
